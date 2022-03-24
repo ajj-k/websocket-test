@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-app.unsubscribe(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: true}));
 
 //ルーティング
 app.get("/", (req, res) => {
@@ -16,7 +16,9 @@ app.get("/check", (req, res) => {
 });
 
 app.post("/check", (req, res) => {
+    console.log("ok");
     const name = req.body.name;
+    console.log(name);
     const context = req.body.context;
     res.send(`name: ${name}, context: ${context}`);
 });
